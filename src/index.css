@@ -1,0 +1,176 @@
+/* ------------------------------------------------------------------
+   Cloud Nine Milk Tea — global styles
+   Tailwind CSS v4 uses this file as its config ("CSS-first config").
+   Change the brand colours / fonts in the @theme block below.
+------------------------------------------------------------------- */
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette — EDIT HERE to re-skin the whole site */
+  --color-cream: #fff8f0; /* page background */
+  --color-cream-deep: #f7eadb; /* soft section background */
+  --color-milk: #b08968; /* milk tea brown (accents) */
+  --color-milk-soft: #d9c0a8; /* light brown borders */
+  --color-cocoa: #4a3428; /* main text + buttons */
+  --color-matcha: #9caf88; /* matcha green */
+  --color-matcha-deep: #6f8358;
+  --color-blush: #f4c2c2; /* soft pink accent */
+  --color-blush-deep: #e79fa0;
+
+  /* Fonts */
+  --font-display: "Fredoka", "Baloo 2", ui-rounded, "Segoe UI", system-ui, sans-serif;
+  --font-body: "Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Soft shadows */
+  --shadow-soft: 0 10px 30px -12px rgba(74, 52, 40, 0.18);
+  --shadow-lift: 0 26px 50px -26px rgba(74, 52, 40, 0.4);
+
+  /* Animations */
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+  --animate-pop: pop 0.35s ease-out;
+  --animate-fade-in: fade-in 0.25s ease-out;
+  --animate-slide-in: slide-in 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-rise: rise 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-wiggle: wiggle 2.4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(3deg);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream font-body text-cocoa antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  /* Clear, high-contrast focus ring for keyboard users */
+  :focus-visible {
+    outline: 2px solid #4a3428;
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+
+  ::selection {
+    background: #f4c2c2;
+    color: #4a3428;
+  }
+
+  /* Respect users who prefer less motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Fade-in-on-scroll helper (used by the <Reveal /> component) */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* A drawn boba pearl, reused for the floating hero decorations */
+.pearl {
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.45), transparent 45%),
+    radial-gradient(circle at 60% 70%, #6b4a35, #33221a 78%);
+  box-shadow: inset -3px -4px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Hide scrollbars on the horizontal category tabs (still scrollable) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
