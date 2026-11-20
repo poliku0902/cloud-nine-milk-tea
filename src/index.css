@@ -56,6 +56,10 @@
     border-radius: 2px;
   }
 
+  footer :focus-visible {
+    outline-color: var(--color-paper);
+  }
+
   ::selection {
     background: #e6ddd0;
     color: #1f1a17;

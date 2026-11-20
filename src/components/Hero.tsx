@@ -87,14 +87,17 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.34 }}
-              className="mt-12 grid grid-cols-3 gap-4 border-t border-hairline pt-7 sm:gap-6 lg:mt-16"
+              className="mt-12 grid grid-cols-1 gap-4 border-t border-hairline pt-7 sm:grid-cols-3 sm:gap-6 lg:mt-16"
             >
               {HERO_PILLARS.map((pillar) => (
-                <div key={pillar.index}>
-                  <dt className="text-[11px] font-medium uppercase tracking-[0.16em] text-ink-subtle tabular-nums">
+                <div
+                  key={pillar.index}
+                  className="grid grid-cols-[1.75rem_1fr] items-baseline gap-x-3 sm:block"
+                >
+                  <dt className="row-span-2 text-[11px] font-medium uppercase tracking-[0.16em] text-ink-subtle tabular-nums">
                     {pillar.index}
                   </dt>
-                  <dd className="mt-1.5 font-display text-lg font-medium leading-snug text-ink sm:text-xl">
+                  <dd className="font-display text-lg font-medium leading-snug text-ink sm:mt-1.5 sm:text-xl">
                     {pillar.title}
                   </dd>
                   <dd className="mt-0.5 text-xs leading-relaxed text-ink-muted">

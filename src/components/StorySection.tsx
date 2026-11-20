@@ -134,8 +134,8 @@ export default function StorySection() {
             </Reveal>
             <ol className="mt-6 divide-y divide-hairline border-y border-hairline">
               {CRAFT_PILLARS.map((pillar, idx) => (
-                <Reveal key={pillar.index} delay={idx * 0.06}>
-                  <li className="grid grid-cols-1 gap-2 py-6 sm:grid-cols-12 sm:gap-4">
+                <li key={pillar.index} className="py-6">
+                  <Reveal delay={idx * 0.06} className="grid grid-cols-1 gap-2 sm:grid-cols-12 sm:gap-4">
                     <span className="text-xs font-medium tracking-[0.18em] text-oolong tabular-nums sm:col-span-2 sm:pt-1">
                       {pillar.index}
                     </span>
@@ -147,8 +147,8 @@ export default function StorySection() {
                         {pillar.body}
                       </p>
                     </div>
-                  </li>
-                </Reveal>
+                  </Reveal>
+                </li>
               ))}
             </ol>
           </div>
